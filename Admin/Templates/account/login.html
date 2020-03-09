@@ -1,0 +1,58 @@
+{% extends 'header_footer.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block 'content' %}
+
+    <div style="margin-top:11%; margin-bottom:3%;" class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <p style="font-size:50px">Log In</p>
+                </center>
+            </div>
+        </div>
+        <form class="login" style="margin-top:4%" id="login" method="post" action="{% url 'account_login' %}"> {% csrf_token %}
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+
+            <div class="col-md-3">
+                <input style="width:100%; height:35px; border:1px solid gray; border-radius:5px; color:black;" type="text" name="login" placeholder="User name"><br><br>
+            </div>
+
+            <div class="col-md-3">
+                <input style="width:100%; height:35px; border:1px solid gray; border-radius:5px; color:black;" type="password" name="password" placeholder="Password"><br><br>
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+        <div class="row"   style="margin-top:1%">
+            <div class="col-md-12">
+                <center>
+                    {% if redirect_field_value %}
+                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <input style="width:23%; border-radius:5px; border:1px solid skyblue;" class="btn btn-primary" type="submit" value="Log-in" />
+                    <input style="width:23%; border-radius:5px; border:1px solid red;" class="btn btn-danger" type="reset" value="Reset" />
+
+                </center>
+            </div>
+        </div>
+
+         <div class="row" style="margin-top:2%">
+            <div class="col-md-12">
+                <center>
+                    <h6>If you don't have account, <a style="color:blue;" href="{{ signup_url }}">please Signup ...</a></h6>
+                    <h6>Forgot your password, <a style="color:blue;" href="{% url 'account_reset_password' %}">please click here ...</a></h6>
+                </center>
+            </div>
+         </div>
+        </form>
+    </div>
+{% endblock %}

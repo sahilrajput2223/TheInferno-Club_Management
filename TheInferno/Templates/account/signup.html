@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TheInferno Admin</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav style="height:100px;" class="navbar col-lg-12 col-md-12 p-0 fixed-top d-flex flex-row">
+        <div style="height:100%;background-color:skyblue;" class="text-center col-md-3 navbar-brand-wrapper d-flex align-items-top justify-content-center">
+            <a class="navbar-brand brand-logo" href="index.html"><img style="width:100%;height:100%;" src="{% static 'logo.png' %}" alt="logo"/></a>
+        </div>
+        <div class="col-md-9" style="height:100px;width:100%;background-color:skyblue;">
+	<div style="margin-top:3.2%;"><p> <a style="color:black;" href="http://127.0.0.1:3333/Admin/" target="_blank">  Back To Home  </a></p> </div>
+
+
+        </div>
+    </nav>
+
+    <div style="margin-top:11%; margin-bottom:3%;" class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <p style="font-size:50px">Sign Up</p>
+                </center>
+            </div>
+        </div>
+        <form class="signup" style="margin-top:4%" id="signup_form" method="post" action="{% url 'account_signup' %}"> {% csrf_token %}
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+
+            <div class="col-md-3">
+                <input style="width:100%; height:35px; border:1px solid gray; border-radius:5px; color:black;" type="text" name="username" placeholder="User name"><br><br>
+            </div>
+
+            <div class="col-md-3">
+                <input style="width:100%; height:35px; border:1px solid gray; border-radius:5px; color:black;" type="email" name="email" placeholder="Email"><br><br>
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+
+            <div class="col-md-3">
+                <input style="width:100%; height:35px; border:1px solid gray; border-radius:5px; color:black;" type="password" name="password1" placeholder="password"><br><br>
+            </div>
+
+            <div class="col-md-3">
+                <input style="width:100%; height:35px; border:1px solid gray; border-radius:5px; color:black;" type="password" name="password2" placeholder="confirm password"><br><br>
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+
+        <div class="row"   style="margin-top:1%">
+            <div class="col-md-12">
+                <center>
+                    {% if redirect_field_value %}
+                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <input style="width:30%; border-radius:5px; border:1px solid skyblue;" class="btn btn-primary" type="submit" value="Sign up" />
+                </center>
+            </div>
+        </div>
+
+        </form>
+    </div>
+
+
+    <footer class="footer">
+
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <div class="container-fluid clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020 <a href="#">Inferno</a>. All rights reserved.</span>
+                    </div>
+
+                </center>
+            </div>
+        </div>
+
+    </footer>
+
+</div>
+</body>
+
+<!-- Mirrored from www.urbanui.com/victory/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jan 2020 13:16:16 GMT -->
+</html>

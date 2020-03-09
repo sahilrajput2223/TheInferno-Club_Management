@@ -1,0 +1,35 @@
+{% extends 'header_footer.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load account %}
+{% load crispy_forms_tags %}
+{% block 'content' %}
+
+    <div style="margin-top:11%; margin-bottom:3%;" class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <p style="font-size:50px; margin-bottom:2%;">Logout</p>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+              <form method="post" action="{% url 'account_logout' %}">
+                          {% csrf_token %}
+                            <p style="font-size:15px; margin-top:1%;"> Are You Sure, You Want To <span style="color:red" >Logout</span>  ?? </p>
+                          {% if redirect_field_value %}
+                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                          {% endif %}
+                            <center>
+                                <button class="btn btn-primary" style="border-radius: 5px">Log out</button>
+                            </center>
+                        </form>
+
+                </center>
+            </div>
+        </div>
+    </div>
+{% endblock %}

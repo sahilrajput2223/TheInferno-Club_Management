@@ -1,0 +1,26 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block content %}
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_3.jpg' %});">
+<div class="overlay"></div>
+</div>
+<form action="">
+    <div style="margin-top:11%; margin-bottom:3%;" class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <p style="font-size:40px">Email Verification Sent</p>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <p style="font-size:15px; margin-top:2%;">We have sent an e-mail to you for verification. Follow the link provided to <span style="color:red">finalize the signup process ...</span></p>
+                    <p style="font-size:15px; margin-top:2%;">Please contact us if you do not receive it within a few minutes ...</p>
+                </center>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

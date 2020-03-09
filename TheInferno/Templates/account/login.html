@@ -1,0 +1,56 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block content %}
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_3.jpg' %});">
+<div class="overlay"></div>
+<div class="container">
+<div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+<div class="text">
+<p class="breadcrumbs mb-2"><span class="mr-2"><a href="index-2.html">Home</a></span> <span>Log In/Sign Up</span></p>
+<h1 class="mb-4 bread">Log In</h1>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="ftco-section">
+<center>
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Sign Up</h4>
+      <form class="cmxform" id="login" action="{% url 'account_login' %}" method="post" >
+        {% csrf_token %}
+        <fieldset>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" name="login" type="text" minlength="2">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" class="form-control" name="password" type="password" minlength="6">
+          </div>
+
+          <div class="row"   style="margin-top:1%">
+            <div class="col-md-12">
+                <center>
+                    {% if redirect_field_value %}
+                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <input style="width:23%; border-radius:5px; border:1px solid green;" class="btn btn-primary" class="btn btn-primary" type="submit" value="Login">
+
+                    <input style="width:23%; border-radius:5px; border:1px solid red;" class="btn btn-danger" type="reset" value="Reset" />
+                </center>
+            </div>
+        </div>
+         </fieldset>
+      </form>
+
+    </div>
+  </div>
+</div>
+</center>
+    </div>
+</section>
+{% endblock %}

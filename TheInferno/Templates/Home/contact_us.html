@@ -1,0 +1,79 @@
+{% extends 'common.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+ <div class="hero-wrap" style="background-image: url({% static 'images/bg_3.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+           <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+              <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                 <div class="text">
+                    <h1 class="mb-4 bread">Contact Us</h1>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+
+    <div style="margin-top:3%; margin-bottom:3%;" class="col-md-12">
+        <form style="margin-top:4%"  method="post"> {% csrf_token %}
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                {{ form.name | as_crispy_field }}
+            </div>
+            <div class="col-md-3">
+            </div>
+
+        </div>
+<div class="row" style="margin-top:1%;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <label>Email*</label>
+                <input name="email" class="form-control" type="text" value="{{ request.user.email }}" readonly>
+            </div>
+            <div class="col-md-3">
+            </div>
+
+        </div>
+<div class="row" style="margin-top:1%;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                {{ form.subject | as_crispy_field }}
+            </div>
+            <div class="col-md-3">
+            </div>
+
+        </div>
+            <div class="row" style="margin-top:1%;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                {{ form.message | as_crispy_field }}
+            </div>
+            <div class="col-md-3">
+            </div>
+
+        </div>
+
+
+        <div class="row"   style="margin-top:1%">
+            <div class="col-md-12">
+                <center>
+                    {% if redirect_field_value %}
+                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <input style="width:23%; border-radius:5px; border:1px solid skyblue;" class="btn btn-primary" type="submit" value="Submit" />
+                    <input style="width:23%; border-radius:5px; border:1px solid red;" class="btn btn-danger" type="reset" value="Reset" />
+
+                </center>
+            </div>
+        </div>
+        </form>
+    </div>
+{% endblock %}

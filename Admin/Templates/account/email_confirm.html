@@ -1,0 +1,46 @@
+{% extends 'header_footer.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load account %}
+{% load crispy_forms_tags %}
+{% block 'content' %}
+
+    <div style="margin-top:11%; margin-bottom:3%;" class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <p style="font-size:50px; margin-bottom:2%;">Email Confirm</p>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                     {% if confirmation %}
+
+                        {% user_display confirmation.email_address.user as user_display %}
+
+                        <p style="font-size:15px; margin-top:2%; >{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a style="color:blue" href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+
+                        <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                        {% csrf_token %}
+                            <center>
+                                <button class="btn btn-primary" style="border-radius: 5px" type="submit">&nbsp;&nbsp;Confirm&nbsp;&nbsp;</button>
+                            </center>
+
+                        </form>
+
+                        {% else %}
+
+                        {% url 'account_email' as email_url %}
+
+                        <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+
+                        {% endif %}
+
+                </center>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'common.html'%}
+{% load static %}
+{% load crispy_forms_tags%}
+
+
+{% block content %}
+      <div class="hero-wrap" style="background-image: url({% static 'images/bg_3.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+           <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+              <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                 <div class="text">
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index-2.html">Zeel Patel</a></span></p>
+                    <h1 class="mb-4 bread">My Profile</h1>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+      <section class="ftco-section ftco-no-pb ftco-room">
+        <div class="container">
+           <div class="row no-gutters justify-content-center mb-5 pb-3">
+              <div class="col-md-7 heading-section text-center ftco-animate">
+                 <span class="subheading">Membership no: 24atc58ht</span>
+                 <h2 class="mb-4">zeelpatel123</h2>
+              </div>
+           </div>
+           <form method="post" style="margin-bottom:5%;">
+               {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                   <label>Name*</label>
+               {{ p_form.name | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6">
+                  <label>email*</label>
+                <input name="email" class="form-control" type="email" value="{{ request.user.email }}" readonly>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                     <label>Gender*</label>
+
+                  {{ p_form.gender | as_crispy_field }}
+                </div>
+              <div class="form-group col-md-6">
+                     <label>Date Of Birth*</label>
+
+                {{ p_form.DOB | as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                     <label>Pincode*</label>
+
+                {{ p_form.pincode | as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6">
+                     <label>Contact*</label>
+
+                {{ p_form.contact | as_crispy_field }}
+              </div>
+            </div>
+              <div class="form-row">
+              <div class="form-group col-md-12">
+                     <label>Address*</label>
+
+                  {{ p_form.address | as_crispy_field }}
+                </div>
+              </div>
+
+            <div class="row" style="margin-top:2%;">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">
+                    <input style="width:100%;border-radius:5px;" type="submit" value="Submit" class="btn btn-primary">
+                </div>
+                <div class="col-md-3">
+                    <input style="width:100%;border-radius:5px;" type="reset" value="Reset" class="btn btn-danger">
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+           </form>
+        </div>
+      </section>
+{% endblock %}

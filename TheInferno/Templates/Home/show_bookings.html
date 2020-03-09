@@ -1,0 +1,38 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block content %}
+      <div class="hero-wrap" style="background-image: url({% static 'images/bg_3.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+           <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+              <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                 <div class="text">
+                    <h1 class="mb-4 bread">My Bookings</h1>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+      <div class="container" style="position: relative; top:20px;bottom:20px;">
+        <table class="table" style="margin-top:5%;margin-bottom:10%;">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Amenities</th>
+                <th scope="col">Booking Date</th>
+              </tr>
+            </thead>
+            {% for i in object_list %}
+
+            <tbody>
+              <tr>
+                <td>{{ i.email }}</td>
+                <td>{{ i.Amenities }}</td>
+                <td>{{ i.Date}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+      </div>
+
+{% endblock %}

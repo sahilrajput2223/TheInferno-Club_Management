@@ -1,0 +1,38 @@
+{% extends 'common.html' %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block content %}
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_3.jpg' %});">
+    <div class="overlay"></div>
+</div>
+    <div style="margin-top:11%; margin-bottom:3%;" class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <p style="font-size:50px; margin-bottom:2%;">Logout</p>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+              <form id="logout" class="cmxform" method="post" action="{% url 'account_logout' %}">
+                          {% csrf_token %}
+                            <p style="font-size:15px; margin-top:1%;"> Are You Sure, You Want To <span style="color:red" >Logout</span>  ?? </p>
+                          {% if redirect_field_value %}
+                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                          {% endif %}
+                            <center>
+                                <input style="width:23%; border-radius:5px; border:1px solid green;" class="btn btn-danger" class="btn btn-primary" type="submit" value="Logout">
+
+                            </center>
+                        </form>
+
+                </center>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
